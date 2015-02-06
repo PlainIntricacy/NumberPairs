@@ -21,6 +21,7 @@ public class Main {
         while((line=reader.readLine())!=null) {
             printPair(line);
         }
+        reader.close();
     }
 
     public static void printPair(String q) {
