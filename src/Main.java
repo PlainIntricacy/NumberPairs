@@ -5,21 +5,22 @@
  * Author: todyerutz@plainintricacy.wordpress.com
  */
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Please enter your list of numbers:");
-        String in = input.nextLine();
-        input.close();
-        printPair(in);
-
+        BufferedReader reader = new BufferedReader(new FileReader("C:/Users/Tudor/IdeaProjects/NumberPairs/src/numbers.txt"));
+        String line;
+        while((line=reader.readLine())!=null) {
+            printPair(line);
+        }
     }
 
     public static void printPair(String q) {
@@ -34,7 +35,7 @@ public class Main {
         do{
             for (int j = i; j < lt.size(); j++) {
                 if (Integer.parseInt(lt.get(i)) + Integer.parseInt(lt.get(j)) == Integer.parseInt(num)) {
-                    System.out.println(lt.get(i) + "+" + lt.get(j));
+                    System.out.println(num + " = " + lt.get(i) + "+" + lt.get(j));
                     lt.remove(j);
                     lt.remove(i);
                     i=-1;
@@ -42,5 +43,6 @@ public class Main {
             }
             i++;
         }while(i<lt.size()-1);
+        System.out.println();
     }
 }
